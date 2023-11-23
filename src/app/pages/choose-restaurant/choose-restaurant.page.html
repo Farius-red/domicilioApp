@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="head_lbl">{{'Select Commerce' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!--
+<ion-header>
+  <ion-toolbar>
+    <div class="header_div">
+      <ion-buttons slot="start">
+        <ion-back-button text="" mode="md"></ion-back-button>
+      </ion-buttons>
+      
+      <ion-title>{{'Select Restaurant' | translate}}</ion-title>
+      <ion-searchbar [placeholder]="('Search by restaurant' | translate) || '&nbsp;'" mode="ios"
+        (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="never"></ion-searchbar>
+    </div>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content>
+  <div class="main_content_div">
+
+    <div class="header_div">
+      <ion-searchbar [placeholder]="('Search By Commerce' | translate) || '&nbsp;'" mode="ios"
+        (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="never"></ion-searchbar>
+    </div>
+
+    <div class="card_div" *ngFor="let item of comercios" (click)="goToAddReview(item)">
+      <div class="resto_detail">
+        <img [src]="item.imagen" class="back_image" alt="">
+        <!-- <div class="back_image" [style.backgroundImage]="'url('+item.cover+')'"></div> -->
+        <div style="padding-left: 20px;">
+          <ion-label class="res_name">{{item.nombreComercial}}</ion-label>
+          <ion-label class="res_location">{{item.direccion[0].direccion}}</ion-label>
+        </div>
+      </div>
+      <div class="line_div"></div>
+    </div>
+
+  </div>
+</ion-content>

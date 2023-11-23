@@ -1,0 +1,139 @@
+<ion-content class="ion-padding">
+  <div class="login-logo">
+    <img src="assets/youu_domicilios.png" class="logo_icon" alt="foodies">
+    <p class="login-name">{{'Register' | translate}}</p>
+  </div>
+
+  <form class="form-row" #loginForm="ngForm" novalidate>
+
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">
+          <h1>{{'name' | translate}}</h1>
+        </ion-label>
+        <ion-input [(ngModel)]="login.nombres" type="text" name="nombres" #nombres="ngModel" spellcheck="false"
+          autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="nombres.valid || submitted == false" class="ion-padding-start">
+          {{'Name is required' | translate}}
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">
+          <h1>{{'Last name' | translate}}</h1>
+        </ion-label>
+        <ion-input [(ngModel)]="login.apellidos" type="text" name="apellidos" #apellidos="ngModel" spellcheck="false"
+          autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger">
+        <p [hidden]="apellidos.valid || submitted == false" class="ion-padding-start">
+          {{'Last name is required' | translate}}
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">
+          <h1>{{'Cellphone' | translate}}</h1>
+        </ion-label>
+        <ion-input [(ngModel)]="login.telefono" name="telefono" type="number" #telefono="ngModel" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger">
+        <p [hidden]="telefono.valid || submitted == false" class="ion-padding-start">
+          {{'Cellphone is required' | translate}}
+        </p>
+      </ion-text>
+
+     
+      <ion-item>
+        <ion-label position="floating">
+          <h1>{{'Email' | translate}}</h1>
+        </ion-label>
+        <ion-input [(ngModel)]="login.email" type="email" name="email" #email="ngModel" spellcheck="false"
+          autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="email.valid || submitted == false" class="ion-padding-start">
+          {{'Email is required' | translate}}
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">
+          <h1>{{'Crear '}}{{'password' | translate}}</h1>
+        </ion-label>
+        <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger">
+        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+          {{'Password is required' | translate}}
+        </p>
+      </ion-text>
+      <ion-item>
+        <ion-label position="floating">
+          <h1>{{'Confirm Password' | translate}}</h1>
+        </ion-label>
+        <ion-input [(ngModel)]="login.confirmPassword" name="cpassword" type="password" #cpassword="ngModel" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger">
+        <p [hidden]="cpassword.valid || submitted == false" class="ion-padding-start">
+          {{'Confirm Password is required' | translate}}
+        </p>
+      </ion-text>
+
+  <!--     <ion-item>
+        <ion-label position="floating">
+          <h1>{{'Gender' | translate}}{{'(Opcional)'}}</h1>
+        </ion-label>
+        <ion-select [(ngModel)]="login.genero" name="genero" interface="action-sheet" cancelText="Cancelar">
+          <ion-select-option [value]="'F'">{{'Female' | translate}}</ion-select-option>
+          <ion-select-option [value]="'M'">{{'Male' | translate}}</ion-select-option>
+          <ion-select-option [value]="'O'">{{'Otro' | translate}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">
+          <h1>{{'Birthday' | translate}}{{'(Opcional)'}}</h1>
+        </ion-label>
+        <ion-datetime name="fechaNacimiento" [(ngModel)]="login.fechaNacimiento" doneText="Listo" cancelText="Cancelar"
+          displayFormat="DD/MMM/YYYY" min="1950-01-01" max="2010-12-31" #fechaNacimiento="ngModel" >
+        </ion-datetime>
+
+      </ion-item> -->
+    </ion-list>
+
+    <!--     <ion-row class="ion-no-margin ion-no-padding">
+      <ion-col class="ion-no-margin ion-no-padding">
+        <ion-button class="btn_class" (click)="cover()" type="submit" [disabled]="isLogin" expand="block">
+          <span *ngIf="!isLogin"> {{'Upload Photo' | translate}}</span>
+          <ion-spinner name="circles"  *ngIf="isLogin"></ion-spinner>
+        </ion-button>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row class="ion-no-margin ion-no-padding">
+      <ion-col class="ion-no-margin ion-no-padding">
+        <ion-button class="btn_class" (click)="onLogin(loginForm)" type="submit" expand="block" [disabled]="isLogin">
+          <span *ngIf="!isLogin"> {{'Sign up' | translate}}</span>
+          <ion-spinner name="circles" *ngIf="isLogin"></ion-spinner>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+  <p class="createAcc" (click)="back()">{{'Already have an account?' | translate}}
+    <span class="registerTag">{{'Inicia sesión aquí'}}</span>
+  </p>
+</ion-content>

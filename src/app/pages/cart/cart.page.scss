@@ -1,0 +1,432 @@
+// ion-label{
+//     display: block;
+// }
+// ion-toolbar {
+//    padding: 0px 10px;
+//    font-weight: bold;
+//    ion-button {
+//        font-weight: bold;
+//    }
+// }
+// .mainContent{
+//     padding: 20px 0px;
+//     ion-label{
+//         display: block;
+//     }
+//     .noData{
+//         text-align: center;
+//         margin-top: 30%;
+        
+//         .noDataImg{
+//             width: 100%;
+//         }
+//     }
+//      .image_div{
+//         border-radius: 10px;
+//         background-position: center;
+//         background-repeat: no-repeat;
+//         background-size: cover;
+//         width: 100%;
+//         height: 100px;
+//     }
+//     .restname{
+//         margin-top: 10px;
+//         font-size: 1rem;
+//         color: black;
+//         font-weight: bold;
+//     }
+//     .address{
+//         font-size: 0.8rem;
+//         color: lightgray;
+//     }
+//     .deliveryAddress{
+//         display: flex;
+//         padding: 20px 10px 0px 10px;
+//         background: #f3f3f3;
+//         margin-top: 10px;
+//         .pin{
+//             width: 25px;
+//             height: 25px;
+//         }
+//         .address{
+//             font-size: 1rem;
+//             margin: 0px;
+//         }
+//         .changeAddress{
+//             color: var(--ion-color-primary);;
+//         }
+//     } 
+//        .card_div{
+//            padding-top: 10px;
+//             .card{
+//             display: flex;
+//             .mainCat{
+//                 display: flex;
+//                 width: 100%;
+//                 flex-direction: row;
+//                 padding:5px 10px;
+//                 .image_div{
+//                     border-radius: 10px;
+//                     background-position: center;
+//                     background-repeat: no-repeat;
+//                     background-size: cover;
+//                     width: 80px;
+//                     height: 80px;
+//                 }
+//                 .desc_div{
+//                     margin-left: 20px;
+//                     .heading_lbl{
+//                         font-size: 14px;
+//                         display: block;
+//                         text-align: left;
+//                     }
+//                     .ratting{
+//                         font-size: 10px;
+//                     }
+//                     .small_lbl{
+//                         font-size: 8px;
+//                         color: lightgray;
+//                         display: block;
+//                         text-align: left;
+//                     }
+                    
+//                 }
+//                 .cartBtn{
+//                     position: absolute;
+//                     right: 15px;
+//                     width: 60px;
+//                     background: white;
+//                 }
+//                 .cartBtn2{
+//                     position: absolute;
+//                     right: 15px;
+//                     width: 80px;
+//                     display: flex;
+//                     background: white;
+//                     .qunitity{
+//                         font-weight: bold;
+//                         margin-top: 8px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     .coupones{
+//         display: flex;
+//         padding: 20px 10px;
+//         background: #f3f3f3;
+//         margin-top: 10px;
+//         .badge{
+//             width: 25px;
+//             height: 25px;
+//         }
+//         .title{
+//             padding: 0px 10px;
+//             color: var(--ion-color-primary);;
+//         }
+//     }
+//     .billing{
+//         padding: 5px 10px;
+//         .singleRow{
+//             display: flex;
+//             justify-content: space-between;
+//             padding: 10px 0px;
+//             border-bottom: 1px dashed lightgray;
+//             .headerTitle{
+//                 font-size: 0.8rem;
+//             }
+//             .boldClass{
+//                 font-weight: bold;
+//             }
+//             .headerTotal{
+//                 font-size: 1rem;
+//             }
+//             .priceTotal{
+//                 font-size: 1rem;
+//             }
+//             .price{
+//                 font-size: 0.8rem;
+//             }
+//         }
+//     }
+//     .instructions{
+//         color: var(--ion-color-primary);
+//         padding: 5px 10px;
+//     }
+// }
+
+
+
+
+/*ion-label{
+    display: block;
+}
+ion-toolbar {
+   padding: 0px 10px;
+   font-weight: bold;
+   ion-button {
+       font-weight: bold;
+   }
+}*/
+ion-header{
+    ion-button{
+        margin: 27px 5px 0px 0px;
+    }
+    ion-toolbar{
+        --padding-bottom:20px;
+    }
+}
+
+ion-title{
+    color: var(--ion-color-primary-gray);
+}
+.mainContent{
+    padding: 15px;
+    ion-label{
+        display: block !important;
+    }
+    .noData{
+        text-align: center;
+        margin-top: 30%;
+        
+        .noDataImg{
+            width: 100%;
+        }
+        ion-label{
+            color: var(--ion-color-primary-gray);
+        }
+        p{
+            font-size: 12px;
+        }
+    }
+    /*
+    .commerce{
+        padding:5px;
+        border-bottom: 1px solid #f3f3f3;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .image_div{
+            border-radius: 8px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 72px;
+            height: 72px;
+        }
+        .restname{
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #565657;
+            font-weight: 600;
+        }
+        .address{
+            font-size: 0.8rem;
+            color: gray;
+        }
+    }*/
+    .deliveryAddress{
+        display: flex;
+        padding: 20px 10px 0px 10px;
+        background: #f3f3f3;
+        margin-top: 10px;
+        .pin{
+            width: 25px;
+            height: 25px;
+        }
+        .address{
+            font-size: 1rem;
+            margin: 0px;
+        }
+        .changeAddress{
+            color: var(--ion-color-primary);;
+        }
+    }
+         
+       .card_div{
+           //padding-top: 10px;
+           .methodsPay{ 
+            margin: 5px 5px 50px 0px;
+            
+           }
+            .card{
+            /*display: flex;
+            width: 100%;
+            flex-direction: row;
+            padding:5px 5px;*/
+            border-bottom: 1px solid #f3f3f3;
+            
+            .mainCat{
+                /*display: flex;
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                padding:5px;
+                */
+                margin-bottom: 10px;
+                
+                .image_div{
+                    border-radius: 8px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 72px;
+                    height: 72px;
+                }
+                .desc_div{
+                    margin-left: 0px;
+                    .heading_lbl{
+                        font-size: 0.8rem;
+                        color: #565657;
+                        font-weight: 600;
+                        display: block;
+                        text-align: left;
+                    }
+                    .ratting{
+                        font-size: 10px;
+                    }
+                    .small_lbl{
+                        font-size: 10px;
+                        color: gray;
+                        display: block;
+                        text-align: left;
+                    }
+                    .restname{
+                        margin-top: 5px;
+                        font-size: 0.8rem;
+                        color: #565657;
+                        font-weight: 600;
+                    }
+                    
+                }
+                .div_priceG{
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .div_price{
+                        position: absolute;
+                        top: 30px;
+                        text-align: center;
+                        .price{
+                            font-size: 0.9rem;
+                            font-weight: 600;
+                            color: #565657;
+                            //padding: 5px 0px;
+                            
+                        }
+                    }
+                }
+                .desc_div2{
+                    margin-left: 20px;
+                    .heading_lbl{
+                        font-size: 14px;
+                        display: block;
+                        text-align: left;
+                    }
+                }
+                .cartBtn{
+                    position: absolute;
+                    right: 15px;
+                    width: 60px;
+                    background: transparent;
+                }
+                .cartBtn2{
+                    position: absolute;
+                    right: 15px;
+                    width: 80px;
+                    display: flex;
+                    background: transparent;
+                    .qunitity{
+                        font-weight: bold;
+                        margin-top: 8px;
+                    }
+                }
+            }
+        }
+    }
+    .coupones{
+        display: flex;
+        padding: 20px 10px;
+        background: #f3f3f3;
+        margin-top: 10px;
+        .badge{
+            width: 25px;
+            height: 25px;
+        }
+        .title{
+            padding: 0px 10px;
+            color: var(--ion-color-secondary);;
+        }
+        ion-textarea{
+            color: var(  --ion-color-secondary);;
+        }
+    }
+    .observacion{
+       
+        padding: 20px 10px;
+        background: #f3f3f3;
+        margin-top: 10px;
+        .badge{
+            width: 25px;
+            height: 25px;
+        }
+        .title{
+            padding: 0px 10px;
+            color: var(--ion-color-secondary);;
+        }
+        ion-textarea{
+            color: black;
+        }
+    }
+    .billing{
+        padding: 5px 10px;
+        .singleRow{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0px;
+            border-bottom: 1px dashed lightgray;
+            .headerTitle{
+                font-size: 0.8rem;
+            }
+            .boldClass{
+                font-weight: bold;
+            }
+            .headerTotal{
+                font-size: 1rem;
+                color: var(--ion-color-primary-gray);
+            }
+            .priceTotal{
+                font-size: 1rem;
+                color: var(--ion-color-primary-gray);
+            }
+            .price{
+                font-size: 0.8rem;
+            }
+        }
+    }
+    .instructions{
+        color: var(--ion-color-primary);
+        padding: 5px 10px;
+    }
+
+.gran-total{
+    display: flex;
+    ion-label{
+        justify-content: center;
+    }
+}
+}
+.description{
+    padding: 0px 10px;
+    font-weight: bold;
+    ion-label{
+        font-size: 12px;
+    }
+}
+.Checkout{
+    font-weight: bold;
+    font-size: 12px;
+}
+
+

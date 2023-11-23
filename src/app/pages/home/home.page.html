@@ -1,0 +1,253 @@
+<ion-header mode="ios">
+  <!-- <ion-toolbar [hidden]="headerHidden" class="animated fadeInDown" *ngIf="haveLocation"> -->
+  <ion-toolbar>
+    <div class="deliveryAddress"> 
+     <!-- 
+      <div class="userPhoto" [style.backgroundImage]="'url('+ profile +')'" *ngIf="profile"></div>
+      <div class="userPhoto" [style.backgroundImage]="'url(assets/user.png)'" *ngIf="!profile"></div> -->
+    <div class="div_searchbar">
+      <ion-icon name="location-sharp" (click)="openChooseAddress()"></ion-icon><ion-label (click)="openChooseAddress()" class="addressCod">{{codAddresss }} </ion-label> <ion-icon name="caret-down-outline"></ion-icon>
+    </div>
+  </div>
+  </ion-toolbar>
+
+  <div>
+    <ion-searchbar animated="true" 
+    [placeholder]="('What are you going to order today?' | translate) || '&nbsp;'"
+    (ionChange)="onSearchChange($event)" [debounce]="150" class="search_bar" ></ion-searchbar>
+  </div>
+
+
+  <ion-card *ngIf="cardCurrentLocation" (click)="addNew()">
+    <ion-item lines="none">
+      <ion-label class="ion-text-wrap">{{"Tu ubicación actual. quieres pedir aquí?"}}</ion-label>
+    </ion-item>
+    <ion-item class="ion-activated" lines="none">
+      <ion-icon name="locate" slot="start"></ion-icon>
+      <ion-label>{{currentAddress}}</ion-label>
+    </ion-item>
+  </ion-card>
+  <ion-card *ngIf="totalOrders > 0" (click)="goToOrders()" color="primary">
+    <ion-item class="ion-activated" lines="none">      
+      <ion-icon name="arrow-dropright" slot="end" color="primary"></ion-icon>
+      <ion-label>Tienes {{totalOrders}} pedidos en cursos</ion-label>
+    </ion-item>
+  </ion-card>
+  
+  <!--<div class="chips_div animated fadeInDown" *ngIf="allRest?.length">
+    <ion-label class="chip" *ngFor="let item of chips;let i = index" (click)="addFilter(i)">{{item}}</ion-label>
+  </div>
+  <ion-item>
+    <ion-label> <span *ngIf="!nearme">{{'Near Me' | translate}}</span> <span
+        *ngIf="nearme">{{'All Rest' | translate}}</span> </ion-label>
+    <ion-toggle slot="end" (ionChange)="nearMe()" [(ngModel)]="nearme"></ion-toggle>
+  </ion-item>-->
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="onScroll($event)" *ngIf="allRest.length== 0">
+  <div class="main_content_div">
+    <div class="categorias">
+      
+      <ion-slides [options]="slideCategories" *ngIf="categories?.length">
+        <ion-slide *ngFor="let item of categories" (click)="filtrarComercio(item)">
+          <ion-grid>
+            <ion-row style="display: flex; justify-content: center">
+              <div class="business_image" [ngStyle]="{'background-image':'url('+item.imagen+')'}">
+              </div>
+            </ion-row>
+            <ion-row style="display: flex; justify-content: center">
+              <ion-label class="category_name">{{item.nombre}}</ion-label>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <!-- Banners de promociones -->
+    <ion-grid *ngIf="!filtroC">
+      <ion-row>
+        <ion-label class="titles"><span>Promociones</span></ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+    <ion-slides [options]="slideOpts" *ngIf="banners?.length">
+      <ion-slide *ngFor="let item of banners" (click)="openPromo(item)">
+        <div class="back_image" [ngStyle]="{'background-image':'url('+item.imagen+')'}">
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </ion-col>
+</ion-row>
+</ion-grid>
+
+    <ion-grid *ngIf="!filtroC">
+      <ion-row>
+        <ion-label class="titles"><span>Comercios destacados</span></ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-slides [options]="slideCommerces" *ngIf="preferidos?.length" >
+            <ion-slide *ngFor="let item of preferidos" >
+              <ion-item lines="none" [disabled]="!item.abierto"  (click)="openMenu(item)">
+                <div class="commerces_image"  [ngStyle]="{'background-image':'url('+item.imagen+')'}">
+                </div>       
+              </ion-item>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-label class="titles"><span>Tiendas</span></ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+
+          <ion-list  *ngIf="commerces?.length">
+            <ion-item *ngFor="let item of commerces" (click)="openMenu(item)" [disabled]="!item.abierto">
+              <ion-avatar class="avatar" >
+                <ion-img class="img_tienda" alt='No se pudo cargar la imagen' [src]="item.imagen"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h3 class="titles">{{item.nombreComercial}}</h3>
+                <p class="parrafos">{{item.descripcion}}</p>
+                <p *ngIf="item.abierto" class="parrafos" style="color:green;"><strong>Abierto</strong></p>
+                <p *ngIf="!item.abierto" class="parrafos" style="color:red;"><strong>Cerrado</strong></p>
+              </ion-label>
+            </ion-item>          
+          </ion-list>
+        <!--   <ion-slides [options]="slideCommerces" *ngIf="commerces?.length">
+            <ion-slide *ngFor="let item of commerces" (click)="openMenu(item)" >
+              <div class="commerces_image" [ngStyle]="{'background-image':'url('+item.imagen+')'}">
+              </div>
+            </ion-slide>
+          </ion-slides> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- lista de productos mejor calificados -->
+    <!--   
+      <ion-grid>
+        <ion-row>
+          <h2>Populares</h2>
+        </ion-row>
+        <ion-row>
+          <ion-list>
+            <ion-item>
+              <ion-label>Pokémon Yellow</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+      </ion-grid>
+ -->
+
+    <div class="noData" *ngIf="commerces.length== 0" [style.backgroundImage]="'url(assets/nothing.jpg)'">
+
+    </div>
+    <p style="font-weight: bold;text-align: center; color: #565657;" *ngIf="commerces.length== 0">
+      {{'No Restaurants Found!' | translate}}
+    </p>
+    <!-- <div *ngFor="let item of dummy">
+      <ion-list>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="card_div">
+      <ion-row id="card_comercio" [className]="item && item.status =='close' ? 'cardClosed ion-no-padding':'card ion-no-padding'"
+        *ngFor="let item of commerces">
+        <ion-col size="3">
+          <div class="image_div" (click)="openMenu(item)" [style.backgroundImage]="'url('+item.cover+')'"></div>
+        </ion-col>
+        <ion-col size="7">
+          <div class="desc_div" (click)="openMenu(item)">
+            <ion-label class="heading_lbl">{{item.tradename}}</ion-label>
+            <ion-label class="small_lbl">
+              {{item.time}}
+              {{'min' | translate}}</ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div class="ratting">
+            <ion-label class="rateNumber">{{item.ratting}}</ion-label>
+          </div>
+          <p class="closed" *ngIf="item && item.status =='close'">{{'Closed' | translate}}</p>
+        </ion-col>
+      </ion-row>
+    </div> -->
+  
+  </div>
+</ion-content>
+<ion-content fullscreen [scrollEvents]="true" (ionScroll)="onScroll($event)" *ngIf="allRest.length> 0">
+  <ion-list >
+    <ion-item *ngFor="let item of allRest" (click)="openSearch(item)">
+      <div class="mainCat" *ngIf="item.tipo=='producto'">
+        <img [src]="item.imagen" alt="" class="image_div">
+        <div class="desc_div">
+          <ion-label class="heading_lbl">{{item.nombre}}</ion-label>
+          <div class="ratting">
+            <ion-icon [name]="item.calificacion >= 1 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 1 ? 'warning':'medium'">
+            </ion-icon>
+            <ion-icon [name]="item.ratting >= 2 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 2 ? 'warning':'medium'">
+            </ion-icon>
+            <ion-icon [name]="item.ratting >= 3 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 3 ? 'warning':'medium'">
+            </ion-icon>
+            <ion-icon [name]="item.ratting >= 4 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 4 ? 'warning':'medium'">
+            </ion-icon>
+            <ion-icon [name]="item.ratting >= 5 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 5 ? 'warning':'medium'">
+            </ion-icon>
+            ({{item.totalCalificacion ? item.totalCalificacion:0}}. {{'Rattings' | translate}})
+          </div>
+          <ion-label class="small_lbl">{{item.descripcion}}</ion-label>
+          <ion-label class="small_lbl">{{getCurrency()}} {{item.precio}}</ion-label>
+        </div>
+      </div>
+      <div class="mainCat" *ngIf="item.tipo=='comercio'">
+        <img [src]="item.imagen" alt="" class="image_div">
+        <div class="desc_div">
+          <ion-label class="heading_lbl">{{item.nombreComercial}}</ion-label>
+          <div class="ratting">
+            <ion-icon [name]="item.calificacion >= 1 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 1 ? 'warning':'medium'">
+            </ion-icon>
+            <ion-icon [name]="item.ratting >= 2 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 2 ? 'warning':'medium'">
+            </ion-icon>
+            <ion-icon [name]="item.ratting >= 3 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 3 ? 'warning':'medium'">
+            </ion-icon>
+            <ion-icon [name]="item.ratting >= 4 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 4 ? 'warning':'medium'">
+            </ion-icon>
+            <ion-icon [name]="item.ratting >= 5 ? 'star-outline':'star'"
+              [color]="item.calificacion >= 5 ? 'warning':'medium'">
+            </ion-icon>
+            ({{item.totalCalificacion ? item.totalCalificacion:0}}. {{'Rattings' | translate}})
+          </div>
+          <ion-label class="small_lbl">{{item.descripcion}}</ion-label>
+          <ion-label class="small_lbl">{{getCurrency()}} </ion-label>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

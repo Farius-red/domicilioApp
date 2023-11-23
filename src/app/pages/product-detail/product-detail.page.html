@@ -1,0 +1,103 @@
+<ion-content #content>
+  <div class="mainContent" *ngIf="food">
+    <div class="restContent" [style.backgroundImage]="'url('+food.imagen+')'">
+      <div class="btnss">
+        <ion-icon (click)="openDetails(food)" class="backIcon" color="light" slot="start" name="arrow-back-outline">
+        </ion-icon>
+      </div>
+    </div>
+    <div class="foodsContent">
+      <div class="food">
+        <ion-label class="foodName">{{food.nombre}}</ion-label>
+        <div class="description">
+
+          <p *ngIf="comercio">producto de {{comercio.nombreComercial}}</p>
+        </div>
+        <ion-label *ngIf="food.restricciones && food.restricciones.length > 0" class="price">{{getCurrency()}}{{food.restricciones[0].precio}} Promoción</ion-label>
+        <ion-label *ngIf="food.restricciones && food.restricciones.length == 0" class="price">{{getCurrency()}}{{food.precio}}</ion-label>
+        <div class="cartBtn2">
+          <!-- *ngIf="quantiy 0" -->
+          <ion-button (click)="removeQ()" fill="clear" size="small">
+            <ion-icon name="remove"></ion-icon>
+          </ion-button>
+          <p color="dark" class="qunitity">{{food.cantidad}}</p>
+          <ion-button (click)="addQ()" fill="clear" size="small">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+
+        </div>
+        <ion-label>
+          {{'Promociones producto'}}
+        </ion-label>
+        <div *ngIf="food.restricciones">
+          <div *ngFor="let promos of food.restricciones" >
+            <ion-label *ngIf="promos.tipoPrecio == 'unidad'" >
+             Por la compra de {{promos.cantidad}}: {{promos.precio}} x Und
+            </ion-label>
+            <ion-label *ngIf="promos.tipoPrecio == 'total'">
+             Por la compra de {{promos.cantidad}}: {{promos.precio}} 
+            </ion-label>
+            <ion-label *ngIf="promos.tipoPrecio == 'especifico'">
+            El {{getNumLetras(promos.cantidad)}} en {{promos.precio}} 
+            </ion-label>
+          </div>
+        </div>
+       
+      </div>
+
+      <!-- <div class="vegSection">
+        <ion-label>{{'Veg Only' | translate}}</ion-label>
+        <ion-toggle color="success" mode="ios" (ionChange)="statusChange()" [(ngModel)]="veg"></ion-toggle>
+      </div> -->
+      <ion-text color="dark">
+        <h6>{{food.descripcion}}</h6>
+      </ion-text>
+      <div class="content_div">
+        <div *ngIf="!reviews?.length; else elseResena" class="segment_detail">
+          <img src="assets/imgs/paper.png" class="sleepy">
+          <ion-label class="sleepy_lbl">{{"You haven't written any review yet." | translate}}</ion-label>
+          <ion-button (click)="review(id)" expand="block" size="small" fill="clear">
+            {{'Add Review' | translate}}</ion-button>
+        </div>
+        <ng-template #elseResena>
+          <div class="segment_detail">
+            <ion-label class="sleepy_lbl">Reseñas</ion-label>
+            <ion-button (click)="review(id)" expand="block" size="small" fill="clear">
+              {{'Add Review' | translate}}</ion-button>
+          </div>
+        </ng-template>
+
+        <div *ngFor="let item of reviews">
+          <ion-row>
+            <ion-col>
+              <div class="review">
+                <p class="review-p" style="font-weight: bold;" *ngIf="item.critico"> {{item.critico.nombres}}
+                  {{item.critico.apellidos}}</p>
+                {{item.descripciones}}
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
+
+<ion-footer *ngIf="food">
+  <!-- *ngIf="totalItem > 0" -->
+
+  <ion-toolbar>
+    <!--color="primary" -->
+
+    <ion-label color="dark" slot="start">{{getCurrency()}} {{food.total}} </ion-label>
+    <ion-button *ngIf="food.cantidad > 0" class="Vcart" (click)="add(food)" slot="end" fill="clear" color="dark">
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+      {{'Add to Cart' | translate}}
+    </ion-button>
+  </ion-toolbar>
+
+
+
+</ion-footer>

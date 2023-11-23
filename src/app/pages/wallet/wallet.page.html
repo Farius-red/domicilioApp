@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'billetera'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-row class="ion-margin-top">
+  <ion-col size="6">
+    <ion-title class="ion-text-center"> 
+      <ion-icon name="cash-outline" color="primary" slot="start"></ion-icon>
+        {{'saldo'}}
+    </ion-title>
+  </ion-col>
+</ion-row>
+
+<ion-row  class="ion-align-items-center ion-margin-top">
+  <ion-col>
+
+    <div class="item-cuenta">
+      <ion-button (click)="goToAddress()" fill="outline" expand="block">
+        <ion-icon name="cash-outline" color="primary" slot="start"></ion-icon>
+        {{'Agregar saldo'}}
+      </ion-button>
+    
+    </div>
+  </ion-col>
+</ion-row>
+
+
+   <div class="tabla-container">
+     <div class="header-tols">
+ 
+    
+        
+        <ion-title class="ion-text-center">Movimientos</ion-title>
+   
+
+     </div>
+     <table class="datable">
+       <thead>
+         <tr>
+           <th> cantidad</th>
+           <th>fecha </th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td>1500</td>
+           <td>12/04/2020</td>
+         </tr>
+       </tbody>
+     </table>
+     <div class="footerTable">
+
+     </div>
+   </div>
+
+
+   <ion-grid class="shared-btn">
+     <ion-row>
+       <ion-col size="12">
+        <div class="item-cuenta ">
+          <ion-button (click)="share()" fill="outline" expand="block">
+            <ion-icon class="ion-text-center" name="share-social-outline" color="primary" slot="start"></ion-icon>
+            {{'Comparte y gana saldo'}}
+          </ion-button>
+        
+        </div>
+       </ion-col>
+      
+     </ion-row>
+   </ion-grid>
+</ion-content>

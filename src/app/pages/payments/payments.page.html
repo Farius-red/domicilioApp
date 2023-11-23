@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'Agregar metodo de pago'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header">
+    <ion-label class="title">{{'Payment Options' | translate}}</ion-label>
+  </div>
+  <ion-item (click)="openStripe()">    
+    <ion-label> Crédito o Débito</ion-label>
+    <ion-icon name="card" color="primary"></ion-icon>
+  </ion-item>
+
+  <ion-item (click)="payWithPaypal()">    
+    <ion-label>{{'PSE'}}</ion-label>   
+  </ion-item>
+
+  
+</ion-content>  

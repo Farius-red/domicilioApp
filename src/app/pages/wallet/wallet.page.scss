@@ -1,0 +1,65 @@
+.item-cuenta{
+    padding: 0;
+    ion-button{
+        margin-bottom: 10px;
+        font-size: 12px;
+        border-radius: 5px;
+        color: #565657;
+    }
+}
+
+
+.tabla-container{
+    font-family: 'Noto Sans', sans-serif;
+    border-radius: 3px;
+    background-color: white;
+    color:black ;
+    width: 80%;
+    margin: auto;
+    font-size: 12px;
+    border: solid 1px #74C044 ;
+}
+
+.tabla-container .header-tols{
+    border-bottom: solid 1px #74C044 ;
+    padding: 12px;
+    display: flex;
+    align-items: baseline;
+}
+.tabla-container .datable{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabla-container .datable,
+.tabla-container .datable th,
+.tabla-container .datable td {
+    padding: 12px;
+    border: solid 1px #74C044 ;
+}
+
+
+.tabla-container .footerTable{
+    padding: 12px;
+    display: flex;
+    align-items: baseline;
+    
+}
+
+.tabla-container .datable th{
+    border: solid 1px #74C044 ;
+    font-weight: bolder;
+    text-align: left;
+}
+
+.tabla-container .datable td{
+    border-bottom: solid 1px #74C044 ;
+}
+
+.tabla-container .datable tbody tr:hover{
+    background-color: var(--ion-color-primary);
+}
+
+.shared-btn{
+  margin-top: 50%;
+}

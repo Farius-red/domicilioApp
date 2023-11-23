@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="backOrder()" size="large"><ion-icon size="large" color="dark" name="close-sharp"></ion-icon></ion-button>
+      </ion-buttons>
+  <!--   <ion-buttons slot="end">
+      <ion-button (click)="chat()" color="primary">
+        <ion-icon slot="end" size="large"  name="chatbox-ellipses-outline"></ion-icon>
+        <h3> {{'Support' | translate}}</h3>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="!loaded" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+    <ion-spinner color="primary" name="crescent"></ion-spinner>
+  </div>
+  <div class="main_content_div" *ngIf="loaded">
+    <ion-label class="res_name">{{'Order Detail' | translate}}</ion-label>
+    <div class="line_div"></div>
+
+    <!--<ion-label class="head_gray">{{'Order Number' | translate}}</ion-label>
+    <ion-label class="small_lbl">{{id}}</ion-label>
+    <ion-label class="head_gray">{{'Payment' | translate}}</ion-label>
+    <ion-label class="small_lbl">{{'Paid' | translate}} ; <span *ngIf="paid =='cod'">COD</span> <span
+        *ngIf="paid =='stripe'">{{'Using Card' | translate}}</span> </ion-label>
+    <ion-label class="head_gray">{{'Date' | translate}}</ion-label>
+    <ion-label class="small_lbl">{{time}}</ion-label>-->
+    <ion-label class="res_address1">Fecha: {{time}}</ion-label>
+    <ion-label class="res_address1">ID: {{clave}}</ion-label>
+    <ion-label class="res_address1">Estado: {{status|translate}}</ion-label>
+    <ion-label class="res_address1">Direccion: {{deliveryAddress}}</ion-label>
+    <ion-button color="primary" size="medium" fill="outline" shape="round" (click)="trackMyOrder()"><ion-icon name="map-outline" ></ion-icon><ion-label > ruta</ion-label></ion-button>
+    
+    <div class="driver_detail_div"  *ngIf="status != 'created' || status != 'doing'">
+      <div class="back_image" [style.backgroundImage]="'url('+dCover+')'"></div>
+      <div style="padding-left: 20px;">
+        <ion-label>{{'Delivery' | translate}}</ion-label><br>
+        <ion-label class="boy_name">{{dName}} {{dLastame}}</ion-label>
+      </div>
+    </div>
+    <!-- <ion-label class="red_lbl" *ngIf="status =='created' ||status =='ongoing' || status =='accepted' " (click)="call()">
+      {{'Call' | translate}} {{restName}}</ion-label>-->
+    <!-- <ion-row >
+      <div class="resto_detail">
+        <ion-col size="3">
+          <div class="photo_comercio"></div>
+        </ion-col>
+        <ion-col size="9">
+          <div class="descrip_comercio">
+            <ion-label class="res_location">{{'This order with' | translate}} {{restName}} {{'was' | translate}} {{status | translate}}
+            </ion-label>
+            <ion-label class="res_address">{{address}}</ion-label>
+            <ion-label class="res_address">{{time}}</ion-label>
+          </div>
+        </ion-col>
+      </div>
+    </ion-row>
+    <div class="line_div"></div> -->
+
+
+    <!-- <ion-label class="res_location">{{address}}</ion-label> -->
+    <div class="line_div"></div>
+    <div class="flex_div">
+      <ion-label class="res_name" style="margin-top: 0px;">{{'Your Order' | translate}}</ion-label>
+      
+    </div>
+
+
+
+    <span>
+      <div *ngFor="let item of orders" class="subNames">
+        <ion-row>
+          <div class="summary_order">
+            <ion-col size="3">
+              <div class="photo_product" [style.backgroundImage]="'url('+item.imagen+')'"></div>
+            </ion-col>
+            <ion-col size="9">
+              <div class="descrip_order">
+                <div class="flex_div">
+                  <ion-label class="food_title">{{item.nombre}}</ion-label>
+                </div>
+                <div class="flex_div">
+                  <ion-label class="food_price">Cantidad: {{item.cantidad}}</ion-label>
+                </div>
+                <div class="flex_div">
+                  <ion-label class="food_price">Valor: {{getCurrency()}} {{item.total}}</ion-label>
+                </div>
+              </div>
+            </ion-col>
+          </div>
+        </ion-row>
+        
+      </div>
+
+
+      <!--<div class="card_div" *ngIf="!item.selectedItem || !item.selectedItem.length">
+        <div class="flex_div">
+          <ion-label class="food_title">{{item.name}} X {{item.quantiy}} </ion-label>
+          <ion-label class="food_price">{{getCurrency()}}{{item.quantiy * item.price}}</ion-label>
+        </div>
+
+      </div>-->
+
+    </span>
+
+    <div class="payment_detail">
+      <div class="line_div"></div>
+      <ion-label class="title_payment" style="margin-top: 0px;">{{'Detail of your payment' | translate}}</ion-label>
+      <div class="line_div"></div>
+      <div class="payment">
+        <div *ngFor="let item of comercios">
+          <ion-label class="items">{{item.nombreComercial}} <span class="subtotal">{{getCurrency()}}
+              {{item.subTotal}}</span>
+          </ion-label>
+          <ion-label class="items" *ngIf="item.descuento">{{'Dicount' | translate}} {{ 'en ' +item.nombreComercial}}
+            <span class="subtotal">- {{ item.tipoDescuento}} {{item.descuento}}</span>
+          </ion-label>
+          <ion-label class="items">{{'Total' | translate}} {{ 'en ' +item.nombreComercial}}<span
+              class="subtotal">{{getCurrency()}} {{item.total}}</span>
+          </ion-label>
+        </div>
+        <ion-label class="items">{{'Subtotal' | translate}} <span class="subtotal">{{getCurrency()}}{{total}}</span>
+        </ion-label>
+        <!-- <ion-label style="margin-top: 5px; font-weight: 600px;" *ngIf="coupon">{{'Coupon Discout' | translate}} <span
+        class="subtotal">{{getCurrency()}}{{dicount}}</span>
+    </ion-label> -->
+        <ion-label class="items" *ngIf="deliverycharge">{{'Delivery Charge' | translate}}
+          <span class="charge">{{getCurrency()}}{{deliverycharge}}</span>
+        </ion-label>
+       <!--  <ion-label class="items" *ngIf="!deliverycharge">
+          <strong>Posibles valores de envio:</strong>
+        </ion-label>
+        <ion-label class="items" *ngFor="let item of tarifas">
+          {{ item.nombre}}<span class="charge"> {{getCurrency()}}{{item.tarifa}} <br></span>
+        </ion-label> -->
+
+      </div>
+      <ion-label class="item_total">{{'Total costs' | translate}} <span
+          class="total">{{(!deliverycharge)?'(Sin domicilio)':'' }}{{getCurrency()}}{{grandTotal}}</span>
+      </ion-label>
+      <div class="line_div"></div>
+
+
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="btn_div">
+      <!-- <ion-button *ngIf="status =='delivered'" (click)="presentAlertConfirm()" size="medium" fill="outline" shape="round" color="warning">
+        <ion-icon name="star" color="warning" slot="start"></ion-icon>
+        {{'Rate Service' | translate}}
+      </ion-button> -->
+      <ion-button *ngIf="status == 'created'" (click)="changeStatus()" size="medium" fill="outline" shape="round" color="danger" expand="full">
+        {{'Cancel Service' | translate}}
+      </ion-button>
+      
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,37 @@
+.noData{
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 250px;
+}
+.coupons{
+    padding: 5px;
+    background-color: rgba(203, 209, 190, 0.534);
+    border-radius: 10px;
+    .info{
+        .title{
+            margin: 0px;
+            font-weight: bold;
+            .code{
+                font-weight: normal;
+                color: var(--ion-color-primary);
+            }
+            .expire{
+                font-size: .8rem;
+                color: gray;
+            }
+            .desc{
+                font-size: .8rem;
+                color: gray;
+            }
+        }
+    }
+    .btns{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

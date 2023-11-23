@@ -1,0 +1,14 @@
+.header{
+    background: #f3f3f3;
+    padding: 20px;
+    .title{
+        font-size: 1rem;
+        font-weight: bold;
+        color: var(--ion-color-primary-gray);
+    }
+}
+.payments{
+    ion-label{
+        color: var(--ion-color-primary-gray); 
+    }
+}

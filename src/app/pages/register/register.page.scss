@@ -1,0 +1,67 @@
+  .login-logo {
+        text-align: center;
+        margin: auto;
+        right: 0px;
+        left: 0px;
+        margin-top: 30%;
+        margin-bottom: 20px;
+        .logo_icon{
+            width: 110px !important;
+        }
+        .login-name{
+            margin: 0px;
+            font-size: 1.5rem;
+            color:var(--ion-color-primary-gray);
+        }
+        .nombres{
+            width: 500px;
+        }
+        .subTitle{
+            margin: 0px;
+            font-size: 1rem;
+        }
+    }
+    .frgTag{
+            text-align: right;
+            color:var(--ion-color-primary-gray);
+    }
+
+ 
+    .ion-select {
+        width: 100%;
+      
+        justify-content: center;
+      }
+    .btn_class{
+        color: white ;
+        height: 50px;
+    }
+    .login-logo img {
+         max-width: 150px;
+    }
+    .list {
+        margin-bottom: 0;
+    }
+    ion-list{
+        --ion-background-color:transparent;
+        margin: 0px;
+    }
+    ion-item{
+         --ion-background-color:transparent;
+        border-radius: 5px !important;
+        margin-top: 10px;
+        
+    }
+  
+   .createAcc{
+        text-align: center; 
+        font-size: 18px;
+        color:var(--ion-color-primary-gray);
+       .registerTag{
+            color: var(--ion-color-primary);
+            font-size: 18px;
+            text-decoration: underline;
+
+            font-weight: bold;
+       }
+   } 

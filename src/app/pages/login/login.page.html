@@ -1,0 +1,87 @@
+<ion-content class="ion-padding">
+  <div class="login-logo">
+    <img src="assets/youu_domicilios.png" class="logo_icon" alt="foodies">
+    <p class="login-name">{{'Login' | translate}}</p>
+    
+  </div>
+
+  <form #loginForm="ngForm" novalidate>
+    <ion-list >
+      <ion-item >
+        <ion-label position="floating"><h1>{{'Email' | translate}}</h1></ion-label>
+        <ion-input [(ngModel)]="login.email" type="email" name="email"
+          #email="ngModel" spellcheck="false" autocapitalize="off" required >
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <p [hidden]="email.valid || submitted == false" class="ion-padding-start">
+          {{'Email is required' | translate}}
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating"><h1>{{'password' | translate}}</h1></ion-label>
+        <ion-input [(ngModel)]="login.password" name="password"  (keyup.enter)="onLogin(loginForm)" 
+          type="password" #password="ngModel" required>
+        </ion-input>
+      </ion-item><br>
+
+      <ion-text color="danger">
+        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+          {{'Password is required' | translate}}
+        </p>
+      </ion-text>
+    </ion-list>
+
+    <ion-row class="ion-no-margin ion-no-padding">
+      <ion-col class="ion-no-margin ion-no-padding">
+        <h4 class="frgTag" (click)="resetPass()">{{'Forgot Password?' | translate}}</h4><br>
+        <ion-button (click)="onLogin(loginForm)" type="submit" size="large"  shape="round" fill="outline" expand="block" [disabled]="isLogin"><br>
+          <span *ngIf="!isLogin"> {{'Log In' | translate}}</span>
+          <ion-spinner name="circles" *ngIf="isLogin"></ion-spinner>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+  <p class="createAcc" (click)="register()">{{'Dont have an account?' | translate}}
+    <span class="registerTag">{{'Sign up' | translate}}{{' Aquí'}}</span>
+  </p>
+
+ 
+  <div class="btns">
+  <!--   <ion-col size="3" (click)="loginGoogle()">
+      <ion-button class="google">
+        <ion-icon  name="logo-google"></ion-icon>
+      </ion-button>
+    </ion-col>
+   <ion-col size="3" >
+  
+     <ion-button class="facebook" (click)="loginFacebook()">
+       <ion-icon  name="logo-facebook"></ion-icon>
+      </ion-button>
+      
+    </ion-col>
+  </div>
+  <div class="btns">
+    <ion-col size="3" (click)="loginGoogle()">
+      <ion-button class="google">
+        <ion-icon  name="logo-google"></ion-icon>
+      </ion-button>
+    </ion-col>
+   <ion-col size="3" >
+  
+     <ion-button class="facebook" (click)="loginFacebook()">
+       <ion-icon  name="logo-facebook"></ion-icon>
+      </ion-button>
+      
+    </ion-col> -->
+ 
+    <img src="assets/imgs/spanish.png" (click)="changeLng('spanish')"
+      [ngClass]="getClassName() == 'spanish' ? 'flagActive':'flagDeactive'" alt="">
+    <img src="assets/imgs/en.png" (click)="changeLng('en')"
+      [ngClass]="getClassName() == 'en' ? 'flagActive':'flagDeactive'" alt="">
+    
+  </div>
+</ion-content>
+

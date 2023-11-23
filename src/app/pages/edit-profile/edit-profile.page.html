@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'Edit Profile' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--
+<ion-header>
+  <ion-toolbar>
+    <div class="header_div">
+      <ion-buttons slot="start">
+        <ion-back-button text="" mode="md" color="#565657"></ion-back-button>
+      </ion-buttons>
+      <ion-label class="head_lbl">{{'Edit Profile' | translate}}</ion-label>
+    </div>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content>
+  <div class="main_content_div">
+    <!-- <div class="back_image" [style.backgroundImage]="'url(assets/imgs/back_image.jpg)'">
+    </div> -->
+
+    <div class="lower_div" style="text-align: center;">
+      <img class="white_div" [src]="imagen" alt="" (click)="cover()" onError="this.src='assets/imgs/user.png'">
+
+      <div class="form_div">
+        <ion-item class="ion-no-padding">
+          <ion-label position="floating">{{'Name' | translate}}</ion-label>
+          <ion-input type="text" [(ngModel)]="nombres"></ion-input>
+        </ion-item>
+        <ion-item class="ion-no-padding">
+          <ion-label position="floating">{{'Last name' | translate}}</ion-label>
+          <ion-input type="text" [(ngModel)]="apellidos"></ion-input>
+        </ion-item>
+        <ion-item class="ion-no-padding">
+          <ion-label position="floating">{{'Cellphone' | translate}}</ion-label>
+          <ion-input type="number" [(ngModel)]="telefono"></ion-input>
+        </ion-item>
+
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="update()" expand="block" class="sub_btn">
+      {{'Save Profile' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,45 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'code'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-logo">
+    <img src="../../../assets/youu_domicilios.png" class="logo_icon" alt="foodies">
+  </div>
+
+  <form [formGroup]="rgCodigoForm">
+    <ion-list >
+    
+      <ion-item>
+        <ion-label position="floating"><h1>code</h1></ion-label>
+        <ion-input formControlName="codigo"  value=""
+          type="text">
+        </ion-input>
+      </ion-item><br>
+
+      <ion-text color="danger">
+        <p *ngIf="codigo " class="ion-padding-start">
+          {{getError('codigo')}}
+        </p>
+      </ion-text>
+    </ion-list>
+
+    <ion-row class="ion-no-margin ion-no-padding">
+      <ion-col class="ion-no-margin ion-no-padding">
+      
+        <ion-button (click)="rgCodigo()" type="submit" size="large"  shape="round" fill="outline" expand="block" [disabled]="rgCodigoForm.invalid"><br>
+          <!-- <span *ngIf="rgCodigoForm.invalid"> {{'send code' }}</span>
+          <ion-spinner name="circles" *ngIf="!rgCodigoFrom.invalid"></ion-spinner> -->
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+  
+</ion-content>

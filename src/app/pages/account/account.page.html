@@ -1,0 +1,101 @@
+<ion-content>
+  <div *ngFor="let usua of myprofile " class="main_content_div">
+    
+    <div class="white_div" [style.backgroundImage]="'url('+photo+')'"></div>
+
+    <div class="content_div">
+      <ion-label class="usernane">{{usua.nombres}}</ion-label>
+
+      <ion-label class="location">
+        {{usua.email}}
+      </ion-label>
+      <ion-label class="location">
+        {{version}}
+      </ion-label>
+<!-- 
+      <div class="call">
+        <ion-button (click)="callDriver()" size="small" fill="outline" expand="block">
+          <ion-icon name="call" color="primary" slot="start"></ion-icon>
+          {{'Call' | translate}}
+        </ion-button>
+      </div>
+    
+     
+      <div class="flex_div">
+        <ion-button (click)="goToselectRestaurants()" size="small" fill="outline" expand="block">
+          <ion-icon name="call" color="primary" slot="start"></ion-icon>
+          {{'Add Review' | translate}}
+        </ion-button>
+        <ion-button (click)="goToEditProfile()" size="small" fill="outline" expand="block">
+          <ion-icon name="call" color="primary" slot="start"></ion-icon>
+          {{'Edit Profile' | translate}}
+        </ion-button>
+        <ion-button (click)="goToAddress()" size="small" fill="outline" expand="block">
+          <ion-icon name="call" color="primary" slot="start"></ion-icon>
+          {{'Manage Address' | translate}}
+        </ion-button>
+        <ion-button [class.active]="seg_id == 1" (click)="changeSegment(2)" size="small" fill="outline" expand="block">
+          <ion-icon name="call" color="primary" slot="start"></ion-icon>
+          {'Reviews' | translate}}
+        </ion-button>
+      </div>-->
+      <ion-row class="ion-align-items-center">
+      
+         <ion-col>
+          <div class="item-cuenta">
+             <!--
+            <ion-button (click)="goToselectRestaurants()" fill="outline" expand="block">
+              <ion-icon name="chatbubble-ellipses" color="primary" slot="start"></ion-icon>
+              {{'Add Review' | translate}}
+            </ion-button>
+       --> 
+            <ion-button (click)="goToEditProfile()" fill="outline" expand="block">
+              <ion-icon name="person" color="primary" slot="start"></ion-icon>
+              {{'Edit Profile' | translate}}
+            </ion-button>
+            <ion-button (click)="goToAddress()" fill="outline" expand="block">
+              <ion-icon name="location" color="primary" slot="start"></ion-icon>
+              {{'Manage Address' | translate}}
+            </ion-button>
+          </div>
+          <ion-button (click)="goToWallet()" fill="outline" expand="block">
+            <ion-icon name="wallet-outline" color="primary" slot="start"></ion-icon>
+            {{'billetera' }}
+          </ion-button>
+          
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col>
+          <div class="segment_div">
+            <ion-label [class.active]="seg_id == 1" (click)="changeSegment(2)">{{'Reviews' | translate}}</ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <div *ngIf="!reviews?.length" class="segment_detail">
+        <img src="assets/imgs/paper.png" class="sleepy">
+        <ion-label class="sleepy_lbl">{{"You haven't written any review yet." | translate}}</ion-label>
+        <ion-button (click)="goToselectRestaurants()" expand="block" size="small" fill="clear">
+          {{'Add Review' | translate}}</ion-button>
+      </div>
+
+      <div *ngFor="let item of reviews">
+        <ion-row>
+          
+          <ion-col size="8">
+            <p style="font-weight: bold;" *ngIf="item.comercio"> {{item.comercio.nombreComercial}}</p>
+            {{item.descripciones}}
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-button class="logout" (click)="logout()" expand="block">
+        <ion-icon name="log-out" slot="start"></ion-icon>
+        {{'Logout' | translate}}
+      </ion-button>
+      
+    </div>
+  </div>
+
+</ion-content>

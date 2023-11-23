@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "660950176335",
+    "firebase_url": "https://youu-domicilios.firebaseio.com",
+    "project_id": "youu-domicilios",
+    "storage_bucket": "youu-domicilios.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660950176335:android:50a6df17af3482a122903a",
+        "android_client_info": {
+          "package_name": "io.domiciliariosYouu.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660950176335-5ssro58sc2djpbl6nrsbj0ubn4dq1q0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDkr7kQ5c4jrP5W6P40J5znMwTW_UR3LM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660950176335-5ssro58sc2djpbl6nrsbj0ubn4dq1q0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660950176335:android:f6f12dc2e055198922903a",
+        "android_client_info": {
+          "package_name": "io.youuDomicilios.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660950176335-5ssro58sc2djpbl6nrsbj0ubn4dq1q0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDkr7kQ5c4jrP5W6P40J5znMwTW_UR3LM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660950176335-5ssro58sc2djpbl6nrsbj0ubn4dq1q0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
